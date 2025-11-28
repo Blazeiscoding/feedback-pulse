@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Pulse Demo</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            line-height: 1.6;
+        }
+        h1 { color: #111827; }
+        p { color: #4b5563; }
+        .content {
+            background: #f3f4f6;
+            padding: 40px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Feedback Pulse Demo</h1>
+    <p>This is a demo page to test the Feedback Pulse widget.</p>
+    <p>The widget should appear in the bottom right corner.</p>
+
+    <div class="content">
+        <h2>Some Content</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+
+    <!-- Replace DATA-PROJECT with a valid project key from your dashboard -->
+    <script src="/widget.js" data-project="REPLACE_WITH_VALID_PROJECT_KEY"></script>
+    
+    <script>
+        // Helper to get project key from URL param for easier testing
+        // e.g. /demo.html?project=proj_abc123
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectKey = urlParams.get('project');
+        if (projectKey) {
+            const script = document.querySelector('script[src="/widget.js"]');
+            script.setAttribute('data-project', projectKey);
+        }
+    </script>
+</body>
+</html>
