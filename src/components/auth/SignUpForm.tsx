@@ -45,7 +45,7 @@ export default function SignUpForm() {
         throw new Error(data.message || "Something went wrong")
       }
 
-      router.push("/auth/signin")
+      router.push("/signin")
     } catch (error: any) {
       setError(error.message)
     } finally {
@@ -118,7 +118,7 @@ export default function SignUpForm() {
       <div className="text-center text-sm">
         <p>
           Already have an account?{" "}
-          <Link href="/auth/signin" className="text-blue-600 hover:underline">
+          <Link href="/signin" className="text-blue-600 hover:underline">
             Sign in
           </Link>
         </p>
