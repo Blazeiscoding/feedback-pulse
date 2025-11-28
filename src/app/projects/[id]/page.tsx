@@ -17,7 +17,7 @@ export default async function ProjectDetailPage(props: ProjectDetailPageProps) {
   const session = await getServerSession(authOptions)
 
   if (!session) {
-    redirect("/auth/signin")
+    redirect("/signin")
   }
 
   const project = await prisma.project.findUnique({
