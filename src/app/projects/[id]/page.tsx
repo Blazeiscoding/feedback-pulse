@@ -46,7 +46,7 @@ export default async function ProjectDetailPage(props: ProjectDetailPageProps) {
       <div className="mb-6">
         <Link
           href="/dashboard"
-          className="flex items-center text-sm text-gray-500 hover:text-gray-700"
+          className="flex items-center text-sm text-gray-500 hover:text-gray-700 dark:text-zinc-400 dark:hover:text-zinc-200"
         >
           <ArrowLeft className="w-4 h-4 mr-1" />
           Back to Dashboard
@@ -55,18 +55,18 @@ export default async function ProjectDetailPage(props: ProjectDetailPageProps) {
 
       <div className="flex items-start justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">{project.name}</h1>
-          <div className="flex items-center mt-2 space-x-4 text-sm text-gray-500">
-            <p>Key: <code className="px-2 py-1 bg-gray-100 rounded">{project.projectKey}</code></p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{project.name}</h1>
+          <div className="flex items-center mt-2 space-x-4 text-sm text-gray-500 dark:text-zinc-400">
+            <p>Key: <code className="px-2 py-1 bg-gray-100 rounded dark:bg-zinc-800 dark:text-zinc-300">{project.projectKey}</code></p>
             <span>•</span>
             <p>Created {new Date(project.createdAt).toLocaleDateString()}</p>
           </div>
         </div>
       </div>
 
-      <div className="bg-white border rounded-lg shadow-sm">
-        <div className="px-6 py-4 border-b">
-          <h2 className="text-lg font-semibold">Feedback ({project.feedback.length})</h2>
+      <div className="bg-white border rounded-lg shadow-sm dark:bg-zinc-900 dark:border-zinc-800">
+        <div className="px-6 py-4 border-b dark:border-zinc-800">
+          <h2 className="text-lg font-semibold dark:text-white">Feedback ({project.feedback.length})</h2>
         </div>
         <FeedbackList feedback={project.feedback} />
       </div>

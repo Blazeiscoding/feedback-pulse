@@ -27,17 +27,17 @@ export default function FeedbackList({ feedback }: FeedbackListProps) {
 
   return (
     <div>
-      <div className="flex items-center justify-between px-6 py-3 bg-gray-50 border-b">
+      <div className="flex items-center justify-between px-6 py-3 bg-gray-50 border-b dark:bg-zinc-900/50 dark:border-zinc-800">
         <div className="flex items-center space-x-2">
-          <Filter className="w-4 h-4 text-gray-500" />
-          <span className="text-sm font-medium text-gray-700">Filter by:</span>
+          <Filter className="w-4 h-4 text-gray-500 dark:text-zinc-400" />
+          <span className="text-sm font-medium text-gray-700 dark:text-zinc-300">Filter by:</span>
           <select
             value={filter}
             onChange={(e) => {
               setFilter(e.target.value as FeedbackType | "ALL")
               setPage(1)
             }}
-            className="text-sm border-gray-300 rounded-md focus:border-blue-500 focus:ring-blue-500"
+            className="text-sm border-gray-300 rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-800 dark:border-zinc-700 dark:text-zinc-200"
           >
             <option value="ALL">All Types</option>
             <option value="bug">Bug</option>
@@ -47,9 +47,9 @@ export default function FeedbackList({ feedback }: FeedbackListProps) {
         </div>
       </div>
 
-      <div className="divide-y">
+      <div className="divide-y dark:divide-zinc-800">
         {paginatedFeedback.length === 0 ? (
-          <div className="p-8 text-center text-gray-500">
+          <div className="p-8 text-center text-gray-500 dark:text-zinc-400">
             No feedback found.
           </div>
         ) : (
@@ -60,21 +60,21 @@ export default function FeedbackList({ feedback }: FeedbackListProps) {
       </div>
 
       {totalPages > 1 && (
-        <div className="flex items-center justify-between px-6 py-3 border-t bg-gray-50">
+        <div className="flex items-center justify-between px-6 py-3 border-t bg-gray-50 dark:bg-zinc-900/50 dark:border-zinc-800">
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
-            className="px-3 py-1 text-sm font-medium text-gray-700 bg-white border rounded-md hover:bg-gray-50 disabled:opacity-50"
+            className="px-3 py-1 text-sm font-medium text-gray-700 bg-white border rounded-md hover:bg-gray-50 disabled:opacity-50 dark:bg-zinc-800 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-700"
           >
             Previous
           </button>
-          <span className="text-sm text-gray-600">
+          <span className="text-sm text-gray-600 dark:text-zinc-400">
             Page {page} of {totalPages}
           </span>
           <button
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
-            className="px-3 py-1 text-sm font-medium text-gray-700 bg-white border rounded-md hover:bg-gray-50 disabled:opacity-50"
+            className="px-3 py-1 text-sm font-medium text-gray-700 bg-white border rounded-md hover:bg-gray-50 disabled:opacity-50 dark:bg-zinc-800 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-700"
           >
             Next
           </button>
