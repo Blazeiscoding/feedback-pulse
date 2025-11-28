@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Pulse Widget Test</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        .container {
+            background: #f9fafb;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+        h1 { margin-top: 0; }
+        code {
+            background: #e5e7eb;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback Pulse Widget Test</h1>
+        <p>This page simulates an external website integrating the Feedback Pulse widget.</p>
+        <p>The widget should appear in the bottom-right corner.</p>
+        
+        <h2>Instructions</h2>
+        <ol>
+            <li>Create a project in the dashboard.</li>
+            <li>Copy the <code>projectKey</code>.</li>
+            <li>Update the <code>data-project</code> attribute in the script tag below (or use the one automatically injected if testing locally with a known key).</li>
+        </ol>
+
+        <p>Current Project Key: <code>REPLACE_WITH_PROJECT_KEY</code></p>
+    </div>
+
+    <!-- Feedback Pulse Widget -->
+    <!-- Replace data-project with a valid project key from your database -->
+    <!-- Feedback Pulse Widget will be injected here -->
+    
+    <script>
+        // Helper to get project key from URL param for easier testing
+        // e.g. test-widget.html?project=proj_123
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectKey = urlParams.get('project');
+        
+        if (projectKey) {
+            const script = document.createElement('script');
+            script.src = "/widget.js";
+            script.setAttribute('data-project', projectKey);
+            document.body.appendChild(script);
+            
+            const codeElement = document.querySelector('code:last-of-type');
+            if (codeElement) codeElement.textContent = projectKey;
+        } else {
+            document.body.innerHTML += '<p style="color:red">Please provide ?project=YOUR_KEY in URL</p>';
+        }
+    </script>
+</body>
+</html>

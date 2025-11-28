@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { useRouter } from "next/navigation"
 import { Plus, X } from "lucide-react"
-import { nanoid } from "nanoid"
+// import { nanoid } from "nanoid"
 
 const formSchema = z.object({
   name: z.string().min(1, "Project name is required"),
@@ -14,7 +14,16 @@ const formSchema = z.object({
 
 export default function CreateProjectModal() {
   const router = useRouter()
+  const [isOpen, setIsOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [createdProject, setCreatedProject] = useState<{ projectKey: string } | null>(null)
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+    },
+  })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)

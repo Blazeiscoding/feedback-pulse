@@ -1,6 +1,4 @@
-"use client"
-
-import { Feedback, FeedbackLabel } from "@prisma/client"
+import type { Feedback, FeedbackLabel } from "@prisma/client"
 import { formatDate } from "@/lib/utils"
 import { Bug, Lightbulb, MessageSquare, Trash2, Tag, Plus, BrainCircuit } from "lucide-react"
 import { useState } from "react"
@@ -12,24 +10,27 @@ interface FeedbackItemProps {
 
 export default function FeedbackItem({ item }: FeedbackItemProps) {
   const router = useRouter()
+  // ... (rest of the component)
+
+
   const [isDeleting, setIsDeleting] = useState(false)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [isAddingLabel, setIsAddingLabel] = useState(false)
   const [newLabel, setNewLabel] = useState("")
 
-  const icons = {
+  const icons: Record<string, React.ReactNode> = {
     bug: <Bug className="w-4 h-4 text-red-500" />,
     feature: <Lightbulb className="w-4 h-4 text-yellow-500" />,
     other: <MessageSquare className="w-4 h-4 text-blue-500" />,
   }
 
-  const badges = {
+  const badges: Record<string, string> = {
     bug: "bg-red-100 text-red-800",
     feature: "bg-yellow-100 text-yellow-800",
     other: "bg-blue-100 text-blue-800",
   }
 
-  const sentimentColors = {
+  const sentimentColors: Record<string, string> = {
     positive: "bg-green-100 text-green-800",
     neutral: "bg-gray-100 text-gray-800",
     negative: "bg-red-100 text-red-800",
@@ -109,7 +110,7 @@ export default function FeedbackItem({ item }: FeedbackItemProps) {
               </span>
               <span className="text-sm text-gray-500">{formatDate(item.createdAt)}</span>
               
-              {item.sentiment && (
+              {item.sentiment && sentimentColors[item.sentiment] && (
                 <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${sentimentColors[item.sentiment]}`}>
                   {item.sentiment.toUpperCase()}
                 </span>

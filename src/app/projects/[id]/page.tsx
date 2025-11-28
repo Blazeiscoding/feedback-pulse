@@ -7,12 +7,13 @@ import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 interface ProjectDetailPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
-export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+export default async function ProjectDetailPage(props: ProjectDetailPageProps) {
+  const params = await props.params
   const session = await getServerSession(authOptions)
 
   if (!session) {

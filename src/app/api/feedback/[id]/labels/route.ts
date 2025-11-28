@@ -10,8 +10,9 @@ const labelSchema = z.object({
 
 export async function POST(
   req: Request,
-  { params }: { params: { id: string } }
+  props: { params: Promise<{ id: string }> }
 ) {
+  const params = await props.params
   try {
     const session = await getServerSession(authOptions)
 
