@@ -29,6 +29,9 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         orderBy: {
           createdAt: "desc",
         },
+        include: {
+          labels: true,
+        },
       },
     },
   })
