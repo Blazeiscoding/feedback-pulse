@@ -69,24 +69,24 @@ export default function CreateProjectModal() {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-xl dark:bg-zinc-900 dark:border dark:border-zinc-800">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold">
+          <h2 className="text-xl font-bold dark:text-white">
             {createdProject ? "Project Created!" : "Create New Project"}
           </h2>
-          <button onClick={handleClose} className="text-gray-500 hover:text-gray-700">
+          <button onClick={handleClose} className="text-gray-500 hover:text-gray-700 dark:text-zinc-400 dark:hover:text-zinc-200">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {createdProject ? (
           <div className="space-y-4">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-zinc-400">
               Your project has been created. Add this code to your website to start collecting feedback:
             </p>
-            <div className="p-3 overflow-x-auto bg-gray-100 rounded-md">
-              <code className="text-sm whitespace-pre">
+            <div className="p-3 overflow-x-auto bg-gray-100 rounded-md dark:bg-zinc-950 dark:border dark:border-zinc-800">
+              <code className="text-sm whitespace-pre dark:text-zinc-300">
                 {`<script src="${window.location.origin}/widget.js" data-project="${createdProject.projectKey}"></script>`}
               </code>
             </div>
@@ -97,13 +97,13 @@ export default function CreateProjectModal() {
                 )
                 alert("Copied to clipboard!")
               }}
-              className="w-full px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50"
+              className="w-full px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50 dark:text-blue-400 dark:border-blue-500 dark:hover:bg-blue-950/30"
             >
               Copy to Clipboard
             </button>
             <button
               onClick={handleClose}
-              className="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700"
+              className="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500"
             >
               Done
             </button>
@@ -111,11 +111,11 @@ export default function CreateProjectModal() {
         ) : (
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">Project Name</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300">Project Name</label>
               <input
                 {...form.register("name")}
                 type="text"
-                className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:placeholder-zinc-500"
                 placeholder="My Awesome Project"
                 autoFocus
               />
@@ -128,14 +128,14 @@ export default function CreateProjectModal() {
               <button
                 type="button"
                 onClick={handleClose}
-                className="px-4 py-2 text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
+                className="px-4 py-2 text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={isLoading}
-                className="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:opacity-50"
+                className="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:opacity-50 dark:bg-blue-600 dark:hover:bg-blue-500"
               >
                 {isLoading ? "Creating..." : "Create Project"}
               </button>

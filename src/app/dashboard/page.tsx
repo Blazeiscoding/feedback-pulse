@@ -30,14 +30,14 @@ export default async function DashboardPage() {
     return (
       <div className="container px-4 py-8 mx-auto">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold">Your Projects</h1>
+          <h1 className="text-3xl font-bold dark:text-white">Your Projects</h1>
           <CreateProjectModal />
         </div>
 
         {projects.length === 0 ? (
-          <div className="p-12 text-center border-2 border-dashed rounded-lg bg-gray-50">
-            <h2 className="mb-2 text-xl font-semibold text-gray-700">No projects yet</h2>
-            <p className="mb-4 text-gray-500">Create your first project to start collecting feedback.</p>
+          <div className="p-12 text-center border-2 border-dashed rounded-lg bg-gray-50 dark:bg-zinc-900/50 dark:border-zinc-800">
+            <h2 className="mb-2 text-xl font-semibold text-gray-700 dark:text-zinc-200">No projects yet</h2>
+            <p className="mb-4 text-gray-500 dark:text-zinc-400">Create your first project to start collecting feedback.</p>
           </div>
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

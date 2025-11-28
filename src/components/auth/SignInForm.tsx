@@ -51,25 +51,25 @@ export default function SignInForm() {
   }
 
   return (
-    <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
+    <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md dark:bg-zinc-900 dark:border dark:border-zinc-800">
       <div className="text-center">
-        <h1 className="text-2xl font-bold">Sign In</h1>
-        <p className="text-gray-500">Welcome back to Feedback Pulse</p>
+        <h1 className="text-2xl font-bold dark:text-white">Sign In</h1>
+        <p className="text-gray-500 dark:text-zinc-400">Welcome back to Feedback Pulse</p>
       </div>
 
       {error && (
-        <div className="p-3 text-sm text-red-500 bg-red-100 rounded-md">
+        <div className="p-3 text-sm text-red-500 bg-red-100 rounded-md dark:bg-red-900/30 dark:text-red-400">
           {error}
         </div>
       )}
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Email</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300">Email</label>
           <input
             {...form.register("email")}
             type="email"
-            className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:placeholder-zinc-500"
             placeholder="you@example.com"
           />
           {form.formState.errors.email && (
@@ -78,11 +78,11 @@ export default function SignInForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Password</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300">Password</label>
           <input
             {...form.register("password")}
             type="password"
-            className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:placeholder-zinc-500"
             placeholder="••••••••"
           />
           {form.formState.errors.password && (
@@ -93,16 +93,16 @@ export default function SignInForm() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+          className="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 dark:bg-blue-600 dark:hover:bg-blue-500"
         >
           {isLoading ? "Signing in..." : "Sign In"}
         </button>
       </form>
 
-      <div className="text-center text-sm">
+      <div className="text-center text-sm dark:text-zinc-400">
         <p>
           Don't have an account?{" "}
-          <Link href="/signup" className="text-blue-600 hover:underline">
+          <Link href="/signup" className="text-blue-600 hover:underline dark:text-blue-400">
             Sign up
           </Link>
         </p>
