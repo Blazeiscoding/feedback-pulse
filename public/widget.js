@@ -43,6 +43,7 @@
       display: none;
       font-family: system-ui, -apple-system, sans-serif;
       overflow: hidden;
+      color: #111827;
     }
     .fp-widget-header {
       background: #f3f4f6;
@@ -83,6 +84,8 @@
       border-radius: 4px;
       font-size: 14px;
       box-sizing: border-box;
+      background-color: #ffffff;
+      color: #111827;
     }
     .fp-textarea {
       resize: vertical;
