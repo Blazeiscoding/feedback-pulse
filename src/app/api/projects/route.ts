@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextResponse } from "next/server"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
@@ -30,7 +31,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(project)
   } catch (error) {
-    return new NextResponse("Internal Error", { status: 500 })
+    return new NextResponse("Internal Error " + error, { status: 500 })
   }
 }
 

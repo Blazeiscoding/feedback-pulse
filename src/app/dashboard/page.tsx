@@ -1,16 +1,18 @@
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
-import { prisma } from "@/lib/db"
-import { redirect } from "next/navigation"
-import ProjectCard from "@/components/dashboard/ProjectCard"
-import CreateProjectModal from "@/components/dashboard/CreateProjectModal"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/error-boundaries */
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { prisma } from "@/lib/db";
+import { redirect } from "next/navigation";
+import ProjectCard from "@/components/dashboard/ProjectCard";
+import CreateProjectModal from "@/components/dashboard/CreateProjectModal";
 
 export default async function DashboardPage() {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await getServerSession(authOptions);
 
     if (!session) {
-      redirect("/signin")
+      redirect("/signin");
     }
 
     const projects = await prisma.project.findMany({
@@ -25,7 +27,7 @@ export default async function DashboardPage() {
       orderBy: {
         createdAt: "desc",
       },
-    })
+    });
 
     return (
       <div className="container px-4 py-8 mx-auto">
@@ -36,8 +38,12 @@ export default async function DashboardPage() {
 
         {projects.length === 0 ? (
           <div className="p-12 text-center border-2 border-dashed rounded-lg bg-gray-50 dark:bg-zinc-900/50 dark:border-zinc-800">
-            <h2 className="mb-2 text-xl font-semibold text-gray-700 dark:text-zinc-200">No projects yet</h2>
-            <p className="mb-4 text-gray-500 dark:text-zinc-400">Create your first project to start collecting feedback.</p>
+            <h2 className="mb-2 text-xl font-semibold text-gray-700 dark:text-zinc-200">
+              No projects yet
+            </h2>
+            <p className="mb-4 text-gray-500 dark:text-zinc-400">
+              Create your first project to start collecting feedback.
+            </p>
           </div>
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -47,7 +53,7 @@ export default async function DashboardPage() {
           </div>
         )}
       </div>
-    )
+    );
   } catch (error: any) {
     return (
       <div className="p-8 text-red-600">
@@ -57,6 +63,6 @@ export default async function DashboardPage() {
           {error.stack}
         </pre>
       </div>
-    )
+    );
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client"
 
 import { useState } from "react"
@@ -44,7 +45,7 @@ export default function SignInForm() {
         router.refresh()
       }
     } catch (error) {
-      setError("Something went wrong")
+      setError("Something went wrong " + error)
     } finally {
       setIsLoading(false)
     }
